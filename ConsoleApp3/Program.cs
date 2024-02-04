@@ -4,35 +4,23 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.WriteLine("Таблица умножения:");
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
+        Console.Write("  ");
+        for (int i = 1; i <= 10; i++)
         {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
+            Console.Write($"{i,4}");
         }
+        Console.WriteLine("\n----------------------------------------");
 
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
+        for (int i = 1; i <= 10; i++)
         {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
+            Console.Write($"{i,2}|");
+            for (int j = 1; j <= 10; j++)
+            {
+                Console.Write($"{i * j,4}");
+            }
+            Console.WriteLine();
         }
-
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
-        }
-        else
-        {
-            Console.WriteLine("Первое число меньше второго.");
-        }
-
-        Console.ReadLine();
     }
 }
