@@ -4,35 +4,22 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        // Заданный массив чисел
+        int[] numbers = { 5, 10, 15, 20, 25 };
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
+        // Нахождение суммы элементов массива
+        int sum = 0;
+        foreach (int number in numbers)
         {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
-
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
+            sum += number;
         }
 
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
-        }
-        else
-        {
-            Console.WriteLine("Первое число меньше второго.");
-        }
+        // Нахождение среднего арифметического
+        double average = (double)sum / numbers.Length;
 
-        Console.ReadLine();
+        // Вывод результатов
+        Console.WriteLine($"Массив: {string.Join(", ", numbers)}");
+        Console.WriteLine($"Сумма элементов: {sum}");
+        Console.WriteLine($"Среднее арифметическое: {average:F2}");
     }
 }
