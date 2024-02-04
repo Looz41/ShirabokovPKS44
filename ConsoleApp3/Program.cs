@@ -4,35 +4,13 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.Write("Введите сумму вклада: ");
+        double суммаВклада = Convert.ToDouble(Console.ReadLine());
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
-        {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
+        double процентнаяСтавка = (суммаВклада < 100) ? 0.05 : (суммаВклада <= 200) ? 0.07 : 0.1;
 
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
-        }
+        double суммаСПроцентами = суммаВклада * (1 + процентнаяСтавка);
 
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
-        }
-        else
-        {
-            Console.WriteLine("Первое число меньше второго.");
-        }
-
-        Console.ReadLine();
+        Console.WriteLine($"Сумма вклада с процентами: {суммаСПроцентами}");
     }
 }
