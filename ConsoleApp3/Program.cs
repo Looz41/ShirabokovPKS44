@@ -4,35 +4,17 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.Write("Введите сумму вклада: ");
+        decimal initialAmount = Convert.ToDecimal(Console.ReadLine());
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
-        {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
+        Console.Write("Введите количество месяцев: ");
+        int months = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
+        for (int i = 0; i < months; i++)
         {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
+            initialAmount += initialAmount * 0.07m;
         }
 
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
-        }
-        else
-        {
-            Console.WriteLine("Первое число меньше второго.");
-        }
-
-        Console.ReadLine();
+        Console.WriteLine($"Конечная сумма вклада через {months} месяцев: {initialAmount:C}");
     }
 }
