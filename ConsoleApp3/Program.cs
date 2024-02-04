@@ -4,35 +4,34 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        string[] stringArray = { "фламинго", "коктейль", "экзотика", "лабиринт", "магнолия" };
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
+        while (true)
         {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
+            Console.Write("Введите новую строку: ");
+            string userString = Console.ReadLine();
 
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
+            if (ArrayContainsString(stringArray, userString))
+            {
+                Console.WriteLine("Строка найдена!");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Строка не найдена. Попробуйте еще раз.");
+            }
         }
+    }
 
-        if (firstNumber == secondNumber)
+    static bool ArrayContainsString(string[] array, string searchString)
+    {
+        foreach (string str in array)
         {
-            Console.WriteLine("Введенные числа равны.");
+            if (str.Equals(searchString, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
         }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
-        }
-        else
-        {
-            Console.WriteLine("Первое число меньше второго.");
-        }
-
-        Console.ReadLine();
+        return false;
     }
 }
