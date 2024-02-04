@@ -4,35 +4,29 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.WriteLine("Введите номер операции: 1. Сложение 2. Вычитание 3. Умножение");
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
+        if (int.TryParse(Console.ReadLine(), out int operationNumber))
         {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
-
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
-        }
-
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
+            switch (operationNumber)
+            {
+                case 1:
+                    Console.WriteLine("Выбрана операция: Сложение");
+                    break;
+                case 2:
+                    Console.WriteLine("Выбрана операция: Вычитание");
+                    break;
+                case 3:
+                    Console.WriteLine("Выбрана операция: Умножение");
+                    break;
+                default:
+                    Console.WriteLine("Операция неопределена");
+                    break;
+            }
         }
         else
         {
-            Console.WriteLine("Первое число меньше второго.");
+            Console.WriteLine("Некорректный ввод. Пожалуйста, введите целое число.");
         }
-
-        Console.ReadLine();
     }
 }
