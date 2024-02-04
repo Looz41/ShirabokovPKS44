@@ -4,35 +4,15 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
-
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
+        Console.Write("Введите число: ");
+        if (int.TryParse(Console.ReadLine(), out int number))
         {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
-
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
-        }
-
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
+            string message = (number == 5 || number == 10) ? "Число либо равно 5, либо равно 10" : "Неизвестное число";
+            Console.WriteLine(message);
         }
         else
         {
-            Console.WriteLine("Первое число меньше второго.");
+            Console.WriteLine("Ошибка ввода. Введите целое число.");
         }
-
-        Console.ReadLine();
     }
 }
