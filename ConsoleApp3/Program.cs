@@ -4,35 +4,41 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.WriteLine("Введите количество строк массива:");
+        int rows = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
-        {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
+        Console.WriteLine("Введите количество столбцов массива:");
+        int cols = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
-        }
+        int[,] array = ReadArrayFromConsole(rows, cols);
+        int sum = SumOfArrayElements(array);
+        Console.WriteLine($"Сумма всех элементов массива: {sum}");
+    }
 
-        if (firstNumber == secondNumber)
+    static int[,] ReadArrayFromConsole(int rows, int cols)
+    {
+        int[,] array = new int[rows, cols];
+
+        Console.WriteLine("Введите элементы массива (по одному числу в каждой строке):");
+        for (int i = 0; i < rows; i++)
         {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
-        }
-        else
-        {
-            Console.WriteLine("Первое число меньше второго.");
+            for (int j = 0; j < cols; j++)
+            {
+                Console.Write($"Элемент [{i}, {j}]: ");
+                array[i, j] = int.Parse(Console.ReadLine());
+            }
         }
 
-        Console.ReadLine();
+        return array;
+    }
+
+    static int SumOfArrayElements(int[,] arr)
+    {
+        int sum = 0;
+        foreach (int num in arr)
+        {
+            sum += num;
+        }
+        return sum;
     }
 }
