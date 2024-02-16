@@ -4,35 +4,18 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.WriteLine("Введите первое целое число:");
+        int a = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
-        {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
+        Console.WriteLine("Введите второе целое число:");
+        int b = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
-        }
+        int sum = AddNumbers(a, b);
+        Console.WriteLine($"Сумма чисел {a} и {b} равна {sum}");
+    }
 
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
-        }
-        else
-        {
-            Console.WriteLine("Первое число меньше второго.");
-        }
-
-        Console.ReadLine();
+    static int AddNumbers(int num1, int num2)
+    {
+        return num1 + num2;
     }
 }
