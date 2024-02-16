@@ -4,35 +4,52 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.WriteLine("Введите число:");
+        string input = Console.ReadLine();
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
+        if (IsNumeric(input))
         {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
-
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
-        }
-
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
+            if (IsPalindrome(input))
+            {
+                Console.WriteLine("Да, это палиндром.");
+            }
+            else
+            {
+                Console.WriteLine("Нет, это не палиндром.");
+            }
         }
         else
         {
-            Console.WriteLine("Первое число меньше второго.");
+            Console.WriteLine("Ошибка: Вы ввели не число!");
         }
+    }
 
-        Console.ReadLine();
+    static bool IsNumeric(string str)
+    {
+        foreach (char c in str)
+        {
+            if (!char.IsDigit(c))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    static bool IsPalindrome(string str)
+    {
+        int left = 0;
+        int right = str.Length - 1;
+
+        while (left < right)
+        {
+            if (str[left] != str[right])
+            {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 }
