@@ -4,35 +4,25 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.WriteLine("Введите число:");
+        long number = long.Parse(Console.ReadLine());
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
-        {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
+        long factorial = CalculateFactorial(number);
+        Console.WriteLine($"Факториал числа {number} равен {factorial}");
+    }
 
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
+    static long CalculateFactorial(long n)
+    {
+        if (n < 0)
         {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
+            throw new ArgumentException("Факториал определен только для неотрицательных чисел.");
         }
 
-        if (firstNumber == secondNumber)
+        long result = 1;
+        for (long i = 2; i <= n; i++)
         {
-            Console.WriteLine("Введенные числа равны.");
+            result *= i;
         }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
-        }
-        else
-        {
-            Console.WriteLine("Первое число меньше второго.");
-        }
-
-        Console.ReadLine();
+        return result;
     }
 }
