@@ -4,35 +4,57 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.WriteLine("Введите число:");
+        string input = Console.ReadLine();
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
+        if (int.TryParse(input, out int number))
         {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
-
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
-        }
-
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
+            if (IsPrime(number))
+            {
+                Console.WriteLine($"{number} - простое число.");
+            }
+            else
+            {
+                Console.WriteLine($"{number} - не является простым числом.");
+                Console.WriteLine(GetDivisorsMessage(number));
+            }
         }
         else
         {
-            Console.WriteLine("Первое число меньше второго.");
+            Console.WriteLine("Ошибка: Введенное значение не является числом.");
         }
+    }
 
-        Console.ReadLine();
+    static bool IsPrime(int num)
+    {
+        if (num <= 1)
+        {
+            return false;
+        }
+        for (int i = 2; i <= Math.Sqrt(num); i++)
+        {
+            if (num % i == 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    static string GetDivisorsMessage(int num)
+    {
+        string message = $"Делители числа {num}: ";
+        for (int i = 2; i <= Math.Sqrt(num); i++)
+        {
+            if (num % i == 0)
+            {
+                message += $"{i}, ";
+                if (i != num / i)
+                {
+                    message += $"{num / i}, ";
+                }
+            }
+        }
+        return message.TrimEnd(' ', ',');
     }
 }
