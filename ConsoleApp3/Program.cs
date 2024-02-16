@@ -4,35 +4,15 @@ class Program
 {
     static void Main()
     {
-        double firstNumber, secondNumber;
+        Console.WriteLine("Введите радиус окружности:");
+        double radius = double.Parse(Console.ReadLine());
 
-        Console.WriteLine("Введите первое число:");
-        if (!double.TryParse(Console.ReadLine(), out firstNumber))
-        {
-            Console.WriteLine("Ошибка ввода первого числа.");
-            return;
-        }
+        double area = CalculateCircleArea(radius);
+        Console.WriteLine($"Площадь окружности с радиусом {radius} равна {area}");
+    }
 
-        Console.WriteLine("Введите второе число:");
-        if (!double.TryParse(Console.ReadLine(), out secondNumber))
-        {
-            Console.WriteLine("Ошибка ввода второго числа.");
-            return;
-        }
-
-        if (firstNumber == secondNumber)
-        {
-            Console.WriteLine("Введенные числа равны.");
-        }
-        else if (firstNumber > secondNumber)
-        {
-            Console.WriteLine("Первое число больше второго.");
-        }
-        else
-        {
-            Console.WriteLine("Первое число меньше второго.");
-        }
-
-        Console.ReadLine();
+    static double CalculateCircleArea(double radius)
+    {
+        return Math.PI * radius * radius;
     }
 }
